@@ -1,6 +1,6 @@
 /**
- * \file            lwow_sys_win32.c
- * \brief           System functions for WIN32
+ * \file            lwow_opts_template.h
+ * \brief           LwOW application configuration
  */
 
 /*
@@ -31,36 +31,14 @@
  * Author:          Tilen MAJERLE <tilen@majerle.eu>
  * Version:         v3.0.2
  */
-#include "system/lwow_sys.h"
-#include "windows.h"
+#ifndef LWOW_HDR_OPTS_H
+#define LWOW_HDR_OPTS_H
 
-#if LWOW_CFG_OS && !__DOXYGEN__
+/* Rename this file to "lwow_opts.h" for your application */
 
-uint8_t
-lwow_sys_mutex_create(LWOW_CFG_OS_MUTEX_HANDLE* mutex, void* arg) {
-    LWOW_UNUSED(arg);
-    *mutex = CreateMutex(NULL, 0, NULL);
-    return 1;
-}
+/*
+ * Open "include/lwow/lwow_opt.h" and
+ * copy & replace here settings you want to change values
+ */
 
-uint8_t
-lwow_sys_mutex_delete(LWOW_CFG_OS_MUTEX_HANDLE* mutex, void* arg) {
-    LWOW_UNUSED(arg);
-    CloseHandle(*mutex);
-    *mutex = NULL;
-    return 1;
-}
-
-uint8_t
-lwow_sys_mutex_wait(LWOW_CFG_OS_MUTEX_HANDLE* mutex, void* arg) {
-    LWOW_UNUSED(arg);
-    return WaitForSingleObject(*mutex, INFINITE) == WAIT_OBJECT_0;
-}
-
-uint8_t
-lwow_sys_mutex_release(LWOW_CFG_OS_MUTEX_HANDLE* mutex, void* arg) {
-    LWOW_UNUSED(arg);
-    return ReleaseMutex(*mutex);
-}
-
-#endif /* LWOW_CFG_OS && !__DOXYGEN__ */
+#endif /* LWOW_HDR_OPTS_H */
